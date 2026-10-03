@@ -1,0 +1,107 @@
+/* ===== VARIABLES =====
+   :root es el "nivel más alto" de la página. Acá definimos colores una sola vez
+   y los reutilizamos con var(--nombre). Si querés cambiar el color principal, lo cambiás acá y listo. */
+:root {
+  --fondo: #f6f4ef;      /* color de fondo de la página (crema suave) */
+  --texto: #1f2a24;      /* color del texto (verde muy oscuro, casi negro) */
+  --acento: #2f6f4f;     /* color principal (verde, por el delta) */
+  --tarjeta: #ffffff;    /* fondo de las tarjetas */
+  --borde: #d9d4c7;      /* color de líneas y bordes */
+}
+
+/* ===== BASE ===== */
+* {
+  box-sizing: border-box; /* hace que el padding no agrande las cajas: cálculos de tamaño más predecibles */
+}
+
+body {
+  margin: 0;                                   /* saca el margen por defecto del navegador */
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; /* usa la tipografía del sistema (rápida, sin descargar nada) */
+  background: var(--fondo);                    /* usa la variable de color definida arriba */
+  color: var(--texto);                         /* color del texto */
+  line-height: 1.6;                            /* separación entre renglones: mejora la lectura */
+}
+
+/* ===== CABECERA ===== */
+.encabezado {
+  background: var(--acento);  /* franja verde */
+  color: #fff;                /* texto blanco */
+  padding: 3rem 1.5rem;       /* espacio interno: arriba/abajo 3rem, costados 1.5rem (1rem = tamaño de letra base) */
+  text-align: center;         /* centra el texto */
+}
+
+.encabezado h1 {
+  margin: 0;                  /* sin margen para controlar la separación nosotros */
+  font-size: 2.5rem;          /* tamaño del título */
+}
+
+.subtitulo {
+  margin: 0.5rem 0 1.5rem;    /* margen: arriba 0.5, costados 0, abajo 1.5 */
+  opacity: 0.9;               /* lo vuelve un poco transparente */
+}
+
+/* ===== MENÚ ===== */
+.menu a {
+  color: #fff;                /* enlaces blancos */
+  text-decoration: none;      /* saca el subrayado */
+  margin: 0 0.75rem;          /* separación a los costados de cada enlace */
+  font-weight: 600;           /* letra más gruesa */
+}
+
+.menu a:hover {
+  text-decoration: underline; /* :hover = cuando pasás el mouse por encima, aparece el subrayado */
+}
+
+/* ===== CONTENIDO ===== */
+main {
+  max-width: 800px;           /* el contenido nunca pasa de 800px de ancho (se lee mejor) */
+  margin: 0 auto;             /* auto a los costados = centra la caja */
+  padding: 2rem 1.5rem;       /* espacio interno */
+}
+
+section {
+  margin-bottom: 3rem;        /* separación entre secciones */
+}
+
+h2 {
+  color: var(--acento);                    /* títulos en verde */
+  border-bottom: 2px solid var(--borde);   /* línea debajo del título */
+  padding-bottom: 0.3rem;                  /* espacio entre texto y línea */
+}
+
+a {
+  color: var(--acento);       /* enlaces normales en verde */
+}
+
+/* ===== TARJETAS DE PROYECTOS ===== */
+.tarjetas {
+  display: grid;                                          /* grid = sistema de columnas */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* tantas columnas como entren, cada una de mínimo 240px; en celular pasa a 1 columna sola */
+  gap: 1rem;                                              /* separación entre tarjetas */
+}
+
+.tarjeta {
+  background: var(--tarjeta);       /* fondo blanco */
+  border: 1px solid var(--borde);   /* borde fino */
+  border-radius: 10px;              /* esquinas redondeadas */
+  padding: 1.25rem;                 /* espacio interno */
+}
+
+.tarjeta h3 {
+  margin-top: 0;                    /* pega el título al borde superior de la tarjeta */
+}
+
+.etiquetas {
+  font-size: 0.85rem;               /* letra más chica */
+  color: var(--acento);             /* en verde */
+  font-weight: 600;                 /* más gruesa */
+  margin-bottom: 0;                 /* sin margen abajo */
+}
+
+/* ===== PIE ===== */
+.pie {
+  text-align: center;               /* centrado */
+  padding: 1.5rem;                  /* espacio interno */
+  color: #6b736e;                   /* gris verdoso */
+  font-size: 0.9rem;                /* letra chica */
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- Le avisa al navegador que esto es HTML5 (la versión moderna) -->
+<html lang="es">
+<!-- <html> envuelve toda la página. lang="es" dice que el contenido está en español (ayuda a buscadores y lectores de pantalla) -->
+
+<head>
+  <!-- <head> = datos "invisibles" de la página: título, estilos, configuración. No se muestra en pantalla -->
+
+  <meta charset="UTF-8">
+  <!-- Permite mostrar tildes y ñ correctamente -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que la página se vea bien en celulares (sin esto, el celular la muestra "achicada") -->
+
+  <title>Marco Saad | Portafolio</title>
+  <!-- Texto que aparece en la pestaña del navegador y en Google -->
+
+  <meta name="description" content="Portafolio de Marco Saad: proyectos web y automatizaciones.">
+  <!-- Resumen que Google muestra debajo del título en los resultados -->
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Conecta este HTML con el archivo de estilos (colores, tamaños, diseño). La ruta es relativa: carpeta css, archivo style.css -->
+</head>
+
+<body>
+  <!-- <body> = todo lo que SÍ se ve en pantalla -->
+
+  <header class="encabezado">
+    <!-- <header> = cabecera de la página. class="encabezado" es una "etiqueta" para que el CSS sepa a quién darle estilo -->
+
+    <h1>Marco Saad</h1>
+    <!-- <h1> = título principal. Debe haber uno solo por página (importa para Google) -->
+
+    <p class="subtitulo">Aprendiendo desarrollo web y automatizaciones</p>
+    <!-- <p> = párrafo de texto -->
+
+    <nav class="menu">
+      <!-- <nav> = menú de navegación -->
+      <a href="#sobre-mi">Sobre mí</a>
+      <!-- <a> = enlace. href="#sobre-mi" salta a la sección que tenga id="sobre-mi" (más abajo) -->
+      <a href="#proyectos">Proyectos</a>
+      <!-- Salta a la sección con id="proyectos" -->
+      <a href="#contacto">Contacto</a>
+      <!-- Salta a la sección con id="contacto" -->
+    </nav>
+  </header>
+
+  <main>
+    <!-- <main> = contenido principal de la página -->
+
+    <section id="sobre-mi">
+      <!-- <section> = bloque temático. id="sobre-mi" es el "nombre" al que apunta el menú -->
+      <h2>Sobre mí</h2>
+      <!-- <h2> = título de sección (un nivel debajo del h1) -->
+      <p>
+        Vivo en el Delta de Tigre y trabajo en construcción y arreglos de casa.
+        Estoy aprendiendo programación y automatización para crear servicios
+        que ayuden a empresas a ahorrar tiempo.
+      </p>
+      <!-- Texto de ejemplo: lo editamos juntos para que suene a vos -->
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+
+      <div class="tarjetas">
+        <!-- <div> = caja genérica. Acá agrupa las tarjetas de proyectos para acomodarlas en columnas -->
+
+        <article class="tarjeta">
+          <!-- <article> = pieza de contenido independiente (una tarjeta = un proyecto) -->
+          <h3>Esta página</h3>
+          <!-- <h3> = subtítulo, nivel debajo del h2 -->
+          <p>Mi primer sitio web, hecho desde cero con HTML y CSS y publicado gratis.</p>
+          <p class="etiquetas">HTML · CSS · GitHub Pages</p>
+          <!-- Tecnologías usadas: sirve para que un reclutador vea rápido qué sabés -->
+        </article>
+
+        <article class="tarjeta">
+          <h3>Próximo proyecto</h3>
+          <p>Acá va el siguiente. Cada cosa que aprendamos se suma como una tarjeta nueva.</p>
+          <p class="etiquetas">En camino</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>
+        Escribime a
+        <a href="mailto:marco.e.saad@gmail.com">marco.e.saad@gmail.com</a>
+      </p>
+      <!-- mailto: abre el programa de correo del visitante con tu mail ya cargado. Cambialo si preferís otro mail público -->
+    </section>
+  </main>
+
+  <footer class="pie">
+    <!-- <footer> = pie de página -->
+    <p>© 2026 Marco Saad</p>
+  </footer>
+</body>
+
+</html>
