@@ -1,0 +1,13 @@
+cat > .gitignore << 'EOF'
+# Archivos de variables secretas (contraseñas, claves de API)
+.env
+
+# Carpeta de dependencias de Node (pesada y se regenera sola)
+node_modules/
+
+# Basura que genera Windows
+Thumbs.db
+Desktop.ini
+
+# Configuración personal de Visual Studio Code
+.vscode/
