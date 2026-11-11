@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditoría exprés | Antes y después</title>
+  <meta name="description" content="Ejemplo de auditoría exprés: un formulario de turnos inventado, mejorado paso a paso. Arrastrá para comparar el antes y el después.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1322'/%3E%3Cpath d='M18 33l10 10 20-22' fill='none' stroke='%235be0a8' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Auditoría exprés | Antes y después">
+  <meta property="og:description" content="Ejemplo interactivo: un formulario de 14 campos pasa a 5. Arrastrá para comparar.">
+  <meta property="og:url" content="https://marcosaad.github.io/Portafolio/demos/auditoria/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="resplandor" aria-hidden="true"></div>
+
+  <header class="barra">
+    <a class="volver" href="../../">Portafolio de Marco Saad</a>
+    <span class="aviso">Caso de ejemplo inventado</span>
+  </header>
+
+  <main>
+    <section class="apertura">
+      <h1>Un trámite de 9 pasos, en 3</h1>
+      <p class="bajada">Así audito una página que anda a medias: encuentro qué traba a la gente, lo arreglo y muestro la diferencia. Arrastrá la línea para comparar.</p>
+    </section>
+
+    <section class="escenario" aria-label="Comparación antes y después de un formulario de turnos">
+      <div class="marco" id="marco">
+        <div class="lienzo" id="lienzo">
+
+          <!-- ANTES: formulario viejo y apretado -->
+          <div class="capa antes" aria-hidden="true">
+            <div class="viejo">
+              <div class="viejo__banda">OFICINA DE TRÁMITES - Sistema de Turnos</div>
+              <div class="viejo__cuerpo">
+                <p class="viejo__titulo">Solicitud de turno - Paso 1 de 9</p>
+                <p class="viejo__aviso">Los campos marcados con <span class="req">*</span> son obligatorios. Complete TODOS los datos.</p>
+                <div class="viejo__grilla">
+                  <div class="campo-v">Apellido <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Nombre <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Tipo de documento <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Nº de documento <span class="req">*</span><i></i></div>
+                  <div class="campo-v">CUIL / CUIT <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Fecha de nacimiento <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Sexo <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Domicilio <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Localidad <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Código postal <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Teléfono fijo <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Teléfono celular <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Correo electrónico <span class="req">*</span><i></i></div>
+                  <div class="campo-v">Repita su correo <span class="req">*</span><i></i></div>
+                </div>
+                <div class="viejo__pie">
+                  <div class="captcha">7xK<span>q</span>P2</div>
+                  <div class="viejo__botones"><b>Enviar</b><b>Limpiar</b><b>Cancelar</b></div>
+                </div>
+                <p class="viejo__legal">He leído y acepto los términos y condiciones del servicio, la política de privacidad y el reglamento general de uso del sistema de turnos en línea.</p>
+              </div>
+
+              <!-- Anotaciones con lapicera roja: se dibujan solas al entrar -->
+              <svg class="notas" viewBox="0 0 960 600" aria-hidden="true">
+                <path class="trazo" pathLength="1" d="M330 86 C 560 82, 658 110, 652 270 C 650 424, 560 454, 330 452 C 120 454, 8 424, 12 270 C 14 120, 120 90, 330 86 C 380 85, 420 86, 440 88"/>
+                <path class="trazo" pathLength="1" d="M96 446 C 160 444, 192 468, 184 484 C 176 506, 60 512, 14 492 C 2 474, 30 448, 96 446"/>
+                <path class="trazo" pathLength="1" d="M22 541 C 160 546, 320 538, 470 543 C 540 545, 600 540, 640 542"/>
+                <path class="trazo" pathLength="1" d="M386 452 C 372 452, 370 456, 370 462 L 370 494 C 370 500, 376 502, 388 502 L 636 502 C 646 502, 648 498, 648 490 L 648 462 C 648 454, 644 452, 636 452 Z"/>
+                <path class="trazo" pathLength="1" d="M700 428 C 690 446, 676 456, 654 468 M 654 468 L 668 466 M 654 468 L 658 454"/>
+              </svg>
+              <p class="nota n1">14 campos.<br>¿Hacen falta todos?</p>
+              <p class="nota n2">captcha que no se lee</p>
+              <p class="nota n3">letra de 11 px: en el celular no se lee</p>
+              <p class="nota n4">¿cuál es el botón principal?</p>
+            </div>
+          </div>
+
+          <!-- DESPUÉS: el mismo trámite, claro -->
+          <div class="capa despues" id="despues">
+            <div class="nuevo">
+              <div class="nuevo__cab">
+                <span class="nuevo__marca">Turnos</span>
+                <ol class="pasos">
+                  <li class="activo"><b>1</b>Tus datos</li>
+                  <li><b>2</b>Día y hora</li>
+                  <li><b>3</b>Confirmar</li>
+                </ol>
+              </div>
+              <div class="nuevo__cuerpo">
+                <div class="nuevo__form">
+                  <h2>¿Quién viene al turno?</h2>
+                  <p class="ayuda">Son 5 datos. Con eso alcanza para reservar.</p>
+                  <div class="campo-n"><span>Nombre y apellido</span><i>María Fernández</i></div>
+                  <div class="campo-n"><span>DNI</span><i>30.123.456</i></div>
+                  <div class="fila-n">
+                    <div class="campo-n"><span>Celular</span><i>11 5555 0123</i></div>
+                    <div class="campo-n"><span>Email</span><i>maria@correo.com</i></div>
+                  </div>
+                  <div class="campo-n ok"><span>Sede</span><i>Tigre Centro</i><em>Más cercana a vos</em></div>
+                  <div class="nuevo__acciones"><button class="primario" tabindex="-1">Continuar</button><button class="secundario" tabindex="-1">Cancelar</button></div>
+                </div>
+                <aside class="nuevo__resumen">
+                  <p class="resumen__t">Tu turno</p>
+                  <p class="resumen__s">Elegís el día en el paso siguiente</p>
+                  <div class="chips"><span>Mar 18</span><span>Mié 19</span><span class="sel">Jue 20</span><span>Vie 21</span></div>
+                  <p class="resumen__s">Demora estimada: 2 minutos</p>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control: un input range invisible (sirve con teclado y táctil) + el asa visible -->
+        <input class="control" id="control" type="range" min="0" max="100" value="100" aria-label="Comparar antes y después. Valor alto muestra el antes, valor bajo muestra el después.">
+        <div class="asa" id="asa" aria-hidden="true"><span class="asa__rotulo asa__rotulo--a">Antes</span><span class="asa__perilla"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5l-5 6 5 6M15 5l5 6-5 6"/></svg></span><span class="asa__rotulo asa__rotulo--d">Después</span></div>
+      </div>
+    </section>
+
+    <section class="cifras" id="cifras" aria-label="Resultados del ejemplo">
+      <div class="cifra"><p class="cifra__n"><span data-desde="14" data-hasta="5">14</span></p><p class="cifra__t">campos para completar</p><p class="cifra__a">antes eran 14</p></div>
+      <div class="cifra"><p class="cifra__n"><span data-desde="9" data-hasta="3">9</span></p><p class="cifra__t">pantallas hasta confirmar</p><p class="cifra__a">antes eran 9</p></div>
+      <div class="cifra"><p class="cifra__n"><span data-desde="8" data-hasta="2">8</span><small> min</small></p><p class="cifra__t">tiempo estimado</p><p class="cifra__a">antes eran 8 min</p></div>
+    </section>
+    <p class="clave">Las cifras son del caso de ejemplo, que armé a propósito. En una auditoría real salen de medir la página original.</p>
+
+    <section class="hallazgos">
+      <h2>Qué encontré y qué cambié</h2>
+      <ul class="lista">
+        <li><span class="grav alta">Alta</span><div><h3>14 campos que el turno no usa</h3><p>Pedía CUIL, domicilio y teléfono fijo para reservar una hora. Quedaron los 5 datos necesarios.</p></div></li>
+        <li><span class="grav alta">Alta</span><div><h3>Captcha ilegible</h3><p>Bloqueaba a quien no distingue las letras. Lo reemplacé por una verificación que no pide descifrar nada.</p></div></li>
+        <li><span class="grav media">Media</span><div><h3>Letra de 11 px y poco contraste</h3><p>Texto de 16 px y colores con contraste suficiente para leer en el celular.</p></div></li>
+        <li><span class="grav media">Media</span><div><h3>Tres botones iguales</h3><p>Ahora hay uno principal (Continuar) y uno secundario (Cancelar). Se acabó la duda.</p></div></li>
+        <li><span class="grav media">Media</span><div><h3>Los errores aparecían al final</h3><p>Cada campo avisa en el momento qué falta y cómo corregirlo.</p></div></li>
+      </ul>
+    </section>
+
+    <section class="metodo">
+      <h2>Cómo lo verifico en una auditoría real</h2>
+      <ol>
+        <li>Cuento campos, pantallas y clics del flujo original, y los anoto antes de tocar nada.</li>
+        <li>Mido el contraste de los colores con una herramienta de accesibilidad.</li>
+        <li>Pruebo todo en un celular con pantalla chica, no solo en la compu.</li>
+        <li>Repito el trámite completo con la versión nueva y comparo con las cifras del principio.</li>
+      </ol>
+      <p class="metodo__nota">Una propuesta mía siempre se presenta como propuesta: no usa el nombre ni el logo del organismo como si fuera su página oficial.</p>
+    </section>
+  </main>
+
+  <footer class="pie">Demo del <a href="../../">portafolio de Marco Saad</a>. HTML, CSS y JavaScript sin librerías.</footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regla | Presupuestos de obra al instante</title>
+  <meta name="description" content="Demo: generador de presupuestos de obra y arreglos. Materiales, horas y margen con el total calculado en vivo y PDF para el cliente.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2314233b'/%3E%3Cpath d='M12 44h40M16 44v-8M24 44v-5M32 44v-8M40 44v-5M48 44v-8' stroke='%23ff5a1f' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Regla | Presupuestos de obra al instante">
+  <meta property="og:description" content="Demo interactiva: materiales, horas y margen con el total calculado en vivo y PDF para el cliente.">
+  <meta property="og:url" content="https://marcosaad.github.io/Portafolio/demos/presupuestos/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Cinta métrica: sigue al mouse y marca la medida en centímetros -->
+  <div class="cinta" aria-hidden="true">
+    <div class="cinta__puntero" id="punteroCinta"><span id="medidaCinta">0 cm</span></div>
+  </div>
+
+  <header class="barra">
+    <a class="marca" href="./">Regla</a>
+    <a class="volver" href="../../">Volver al portafolio</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__texto">
+        <h1>Presupuestos que se leen de un vistazo</h1>
+        <p class="hero__bajada">Cargá materiales, horas y margen. El total se calcula solo y sale en PDF listo para el cliente.</p>
+
+        <div class="rubros" role="group" aria-label="Elegí un rubro de ejemplo">
+          <button class="rubro" data-rubro="plomeria" aria-pressed="true">Plomería</button>
+          <button class="rubro" data-rubro="electricidad" aria-pressed="false">Electricidad</button>
+          <button class="rubro" data-rubro="albanileria" aria-pressed="false">Albañilería</button>
+        </div>
+        <p class="nota">Los precios son valores de ejemplo. Cambiá cualquier cifra y el total se actualiza.</p>
+      </div>
+
+      <div class="escena">
+        <article class="hoja" id="hoja" aria-label="Presupuesto">
+          <div class="hoja__cabecera">
+            <div>
+              <p class="hoja__titulo">Presupuesto <span id="nroPresupuesto">0001</span></p>
+              <p class="hoja__fecha" id="fechaHoy"></p>
+            </div>
+            <div class="hoja__datos">
+              <label>Cliente<input type="text" id="cliente" value="Familia Rodríguez" autocomplete="off"></label>
+              <label>Trabajo<input type="text" id="trabajo" value="" autocomplete="off"></label>
+            </div>
+          </div>
+
+          <table class="tabla">
+            <thead>
+              <tr><th scope="col">Materiales</th><th scope="col" class="num">Cant.</th><th scope="col" class="num">Precio</th><th scope="col" class="num">Subtotal</th><th scope="col"><span class="solo-lectura">Quitar</span></th></tr>
+            </thead>
+            <tbody id="filas"></tbody>
+          </table>
+          <button class="agregar" id="agregar" type="button">Agregar material</button>
+
+          <div class="mano">
+            <label>Horas de trabajo<input type="number" id="horas" min="0" step="0.5" inputmode="decimal"></label>
+            <label>Valor de la hora<input type="number" id="valorHora" min="0" step="500" inputmode="numeric"></label>
+            <p class="mano__sub"><span>Mano de obra</span><strong id="subMano"></strong></p>
+          </div>
+
+          <div class="ajustes">
+            <label class="margen">Margen <output id="margenSalida">20%</output>
+              <input type="range" id="margen" min="0" max="60" step="1" value="20">
+            </label>
+            <label>IVA
+              <select id="iva">
+                <option value="0">Sin IVA</option>
+                <option value="21">21%</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="total">
+            <span class="total__rotulo">Total</span>
+            <div class="total__monto"><span class="peso">$</span><div class="odometro" id="odometro" role="img" aria-label="Total"></div></div>
+          </div>
+
+          <div class="firma">Firma y aclaración: ______________________________</div>
+        </article>
+
+        <button class="pdf" id="pdf" type="button">Descargar PDF</button>
+      </div>
+    </section>
+
+    <section class="formula">
+      <h2>Cómo se calcula</h2>
+      <p class="formula__linea" id="formulaLinea"></p>
+      <ul class="formula__lista">
+        <li><strong>Costo</strong> es la suma de los materiales y la mano de obra (horas por valor de la hora).</li>
+        <li><strong>Margen</strong> se aplica sobre el costo. El slider lo mueve de 0% a 60%.</li>
+        <li><strong>IVA</strong> se suma al final y solo si lo elegís.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pie">Demo del <a href="../../">portafolio de Marco Saad</a>. HTML, CSS y JavaScript sin librerías.</footer>
+</body>
+</html>
