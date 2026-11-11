@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revisado | Encontrá el error de la IA</title>
+  <meta name="description" content="Tres respuestas armadas por una IA, cada una con un error escondido. Tocá la línea que está mal y aprendé cómo la verifico.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2314201c'/%3E%3Crect x='10' y='20' width='44' height='24' fill='none' stroke='%23e8404f' stroke-width='5' transform='rotate(-8 32 32)'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Revisado | Encontrá el error de la IA">
+  <meta property="og:description" content="Tres respuestas con un error escondido cada una. ¿Lo encontrás?">
+  <meta property="og:url" content="https://marcosaad.github.io/Portafolio/demos/revisado/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Filtro SVG que le da a los sellos el aspecto de tinta gastada -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="tinta" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="onda"/>
+      <feDisplacementMap in="SourceGraphic" in2="onda" scale="5" result="borde"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="9" result="grano"/>
+      <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1.2" result="mancha"/>
+      <feComposite in="borde" in2="mancha" operator="in"/>
+    </filter>
+  </svg>
+
+  <header class="barra">
+    <a class="marca" href="./">Revisado</a>
+    <a class="volver" href="../../">Volver al portafolio</a>
+  </header>
+
+  <main>
+    <section class="apertura">
+      <h1>La IA se equivoca. ¿Lo ves?</h1>
+      <p class="bajada">Usar IA rinde mucho si se revisa lo que devuelve. Acá hay tres respuestas con un error escondido cada una. Tocá la línea que está mal.</p>
+      <p class="aviso">Son casos armados para practicar. Los casos reales van en la bitácora de errores.</p>
+    </section>
+
+    <div class="mesa">
+      <section class="ficha" id="ficha" aria-labelledby="tituloCaso">
+        <div class="ficha__cab">
+          <p class="progreso" id="progreso">Caso 1 de 3</p>
+          <h2 id="tituloCaso"></h2>
+        </div>
+        <p class="pedido"><span>Pedido</span><q id="pedido"></q></p>
+
+        <div class="documento" id="documentoCaja">
+          <p class="documento__rotulo">Respuesta de la IA. Tocá la línea con el error</p>
+          <ol class="documento__lineas" id="lineas"></ol>
+          <div class="sello" id="sello" aria-hidden="true">Error encontrado</div>
+        </div>
+
+        <div class="respuesta" id="respuesta" aria-live="polite"></div>
+      </section>
+
+      <aside class="planilla" aria-labelledby="tituloPlanilla">
+        <h2 id="tituloPlanilla">Mis chequeos</h2>
+        <ul class="chequeos" id="chequeos">
+          <li data-c="0"><span class="casilla"></span><div><strong>Rehacer las cuentas por separado</strong><small>La que más pesa, primero.</small></div></li>
+          <li data-c="1"><span class="casilla"></span><div><strong>Probar con un caso mínimo</strong><small>Lista vacía, un solo ítem.</small></div></li>
+          <li data-c="2"><span class="casilla"></span><div><strong>Confirmar en la documentación</strong><small>Si no lo conozco, lo busco o lo ejecuto.</small></div></li>
+        </ul>
+        <p class="planilla__nota">Cada chequeo se marca cuando encontrás el error de su caso.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="pie">Demo del <a href="../../">portafolio de Marco Saad</a>. HTML, CSS y JavaScript sin librerías.</footer>
+</body>
+</html>

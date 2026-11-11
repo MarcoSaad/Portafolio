@@ -1,0 +1,130 @@
+/* ===== Revisado: encontrá el error =====
+   Concepto: planilla de control de calidad. Papel de formulario, máquina de escribir y un sello que cae con peso. */
+
+:root {
+  --fondo: #cfd6cd;
+  --papel: #f6f7f1;
+  --tinta: #14201c;
+  --suave: #4f5d56;
+  --rojo: #c8202f;
+  --rojo-claro: #e8404f;
+  --verde: #1f7a4f;
+  --resalte: #ffe14d;
+  --linea: #c3cbc1;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Courier Prime", "Courier New", monospace; color: var(--tinta); line-height: 1.55; font-size: 1.05rem;
+  background-color: var(--fondo); min-height: 100vh;
+  background-image: linear-gradient(rgba(20,32,28,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(20,32,28,.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--azul, #1d3f8f); outline-offset: 3px; }
+
+.barra { max-width: 1160px; margin: 0 auto; padding: 24px 24px 0; display: flex; justify-content: space-between; align-items: center; }
+.marca { font: 900 1.9rem "Big Shoulders Display", sans-serif; letter-spacing: .03em; text-decoration: none; border: 3px solid var(--tinta); padding: 0 12px; transform: rotate(-2deg); display: inline-block; }
+.volver { text-underline-offset: 4px; font-size: .95rem; }
+
+/* ---------- Apertura ---------- */
+.apertura { max-width: 1160px; margin: 0 auto; padding: 56px 24px 36px; }
+h1 { font: 900 clamp(3.4rem, 10vw, 9rem)/.86 "Big Shoulders Display", sans-serif; letter-spacing: -.005em; max-width: 9ch; }
+.bajada { margin-top: 44px; max-width: 52ch; font-size: 1.2rem; }
+.aviso { margin-top: 14px; max-width: 52ch; font-size: .92rem; color: var(--suave); }
+
+/* ---------- Mesa de trabajo ---------- */
+.mesa { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; align-items: start; }
+
+.ficha {
+  position: relative; background: var(--papel); border: 3px solid var(--tinta); box-shadow: 10px 10px 0 var(--tinta);
+  padding: 0 0 26px; overflow: hidden;
+}
+.ficha.golpe { animation: golpe .45s ease-out; }
+@keyframes golpe { 0%,100% { transform: translate(0,0); } 20% { transform: translate(0,6px); } 40% { transform: translate(-3px,-2px); } 60% { transform: translate(2px,2px); } 80% { transform: translate(-1px,0); } }
+
+.ficha__cab { background: var(--tinta); color: var(--papel); padding: 16px 26px 14px; }
+.progreso { font-size: .9rem; opacity: .8; }
+.ficha__cab h2 { font: 900 clamp(1.8rem, 4vw, 2.6rem)/1 "Big Shoulders Display", sans-serif; letter-spacing: .01em; margin-top: 2px; }
+.pedido { margin: 22px 26px 0; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.pedido span { font-weight: 700; background: var(--resalte); padding: 0 8px; }
+.pedido q { quotes: "«" "»"; font-style: italic; }
+
+.documento { position: relative; margin: 20px 26px 0; padding: 16px 0 6px; border-top: 2px dashed var(--suave); }
+.documento__rotulo { font-size: .88rem; color: var(--suave); margin-bottom: 10px; }
+.documento__lineas { list-style: none; padding: 0; counter-reset: ln; }
+.linea {
+  display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 7px 10px; margin: 2px 0; border: 0; border-radius: 0;
+  background: linear-gradient(var(--resalte), var(--resalte)) no-repeat 0 100% / 0% 100%; transition: background-size .25s ease-out;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.linea:hover:not(:disabled), .linea:focus-visible { background-size: 100% 100%; }
+.codigo .linea { font-size: .98rem; }
+.codigo .linea::before { counter-increment: ln; content: counter(ln); display: inline-block; width: 2ch; margin-right: 1.4ch; color: var(--suave); text-align: right; }
+.linea:disabled { cursor: default; }
+.linea.mal { animation: sacudir .4s; background: rgba(200,32,47,.14); text-decoration: line-through; text-decoration-color: var(--suave); }
+.linea.error { background: rgba(200,32,47,.16); box-shadow: inset 5px 0 0 var(--rojo); }
+@keyframes sacudir { 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+
+/* ---------- El sello ---------- */
+.sello {
+  position: absolute; left: 50%; top: 48%; z-index: 3; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) rotate(-9deg);
+  font: 900 clamp(2.2rem, 7vw, 4.2rem)/1 "Big Shoulders Display", sans-serif; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
+  color: var(--rojo); border: 7px double var(--rojo); padding: .12em .4em; mix-blend-mode: multiply; filter: url(#tinta);
+}
+.sello.estampa { animation: estampar .55s cubic-bezier(.2,.9,.3,1) forwards; }
+@keyframes estampar {
+  0%   { opacity: 0; transform: translate(-50%, -50%) rotate(-16deg) scale(3.2); }
+  55%  { opacity: .95; transform: translate(-50%, -50%) rotate(-9deg) scale(.92); }
+  75%  { transform: translate(-50%, -50%) rotate(-9deg) scale(1.05); }
+  100% { opacity: .92; transform: translate(-50%, -50%) rotate(-9deg) scale(1); }
+}
+
+/* ---------- Respuesta (lo que explica cada toque) ---------- */
+.respuesta { margin: 22px 26px 0; }
+.nota { padding: 14px 18px; border-left: 6px solid var(--suave); background: rgba(20,32,28,.05); animation: asoma .3s ease-out; }
+.nota--bien { border-left-color: var(--verde); background: rgba(31,122,79,.09); }
+.nota--mal { border-left-color: var(--rojo); }
+.nota strong { display: block; font: 900 1.5rem/1.1 "Big Shoulders Display", sans-serif; margin-bottom: 4px; letter-spacing: .02em; }
+.nota p + p { margin-top: 8px; }
+.nota .como { font-size: .95rem; color: var(--suave); }
+@keyframes asoma { from { opacity: 0; transform: translateY(8px); } }
+.accion {
+  margin-top: 14px; font: 700 1.05rem "Courier Prime", monospace; padding: 12px 22px; background: var(--tinta); color: var(--papel);
+  border: 3px solid var(--tinta); border-radius: 0; cursor: pointer; box-shadow: 5px 5px 0 var(--rojo); transition: transform .15s, box-shadow .15s;
+}
+.accion:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--rojo); }
+.accion--suave { background: transparent; color: var(--tinta); box-shadow: none; }
+.accion--suave:hover { box-shadow: none; transform: none; background: var(--resalte); }
+.final h3 { font: 900 clamp(2rem, 5vw, 3rem)/1 "Big Shoulders Display", sans-serif; }
+
+/* ---------- Planilla ---------- */
+.planilla { position: sticky; top: 20px; background: var(--papel); border: 3px solid var(--tinta); padding: 20px; }
+.planilla h2 { font: 900 1.7rem "Big Shoulders Display", sans-serif; letter-spacing: .02em; margin-bottom: 14px; }
+.chequeos { list-style: none; padding: 0; display: grid; gap: 16px; }
+.chequeos li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; opacity: .55; transition: opacity .3s; }
+.chequeos li.hecho { opacity: 1; }
+.chequeos small { display: block; color: var(--suave); font-size: .85rem; line-height: 1.35; }
+.chequeos strong { font-size: .98rem; line-height: 1.25; display: block; }
+.casilla { width: 30px; height: 30px; border: 3px solid var(--tinta); position: relative; }
+.hecho .casilla::after { content: ""; position: absolute; left: 5px; top: -6px; width: 10px; height: 22px; border: solid var(--rojo); border-width: 0 6px 6px 0; transform: rotate(40deg); animation: tilde .3s ease-out; }
+@keyframes tilde { from { opacity: 0; transform: rotate(40deg) scale(2); } }
+.planilla__nota { margin-top: 18px; font-size: .85rem; color: var(--suave); }
+
+.pie { max-width: 1160px; margin: 64px auto 0; padding: 22px 24px 40px; font-size: .92rem; color: var(--suave); border-top: 3px solid var(--tinta); }
+
+@media (max-width: 900px) {
+  .mesa { grid-template-columns: 1fr; }
+  .planilla { position: static; order: 2; }
+  .ficha { box-shadow: 6px 6px 0 var(--tinta); }
+}
+@media (max-width: 560px) {
+  .pedido, .documento, .respuesta { margin-left: 16px; margin-right: 16px; }
+  .ficha__cab { padding: 14px 16px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .sello.estampa { opacity: .92; }
+  html { scroll-behavior: auto; }
+}

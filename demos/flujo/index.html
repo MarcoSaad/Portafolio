@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flujo | Una automatización paso a paso</title>
+  <meta name="description" content="Demo: una automatización simulada que clasifica un mensaje, extrae datos y arma una respuesta. Elegí un mensaje o escribí el tuyo y mirá el recorrido.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffc800'/%3E%3Ccircle cx='22' cy='34' r='12' fill='%231f4bd8'/%3E%3Cpath d='M36 20l20 12-20 12z' fill='%23e63b2e'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Flujo | Una automatización paso a paso">
+  <meta property="og:description" content="Un mensaje entra y el sistema decide qué hacer. Simulación interactiva.">
+  <meta property="og:url" content="https://marcosaad.github.io/Portafolio/demos/flujo/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <header class="barra">
+    <a class="marca" href="./"><span class="marca__c"></span><span class="marca__q"></span><span class="marca__t"></span>Flujo</a>
+    <a class="volver" href="../../">Volver al portafolio</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="forma forma--circulo" data-prof="22" aria-hidden="true"></div>
+      <div class="forma forma--triangulo" data-prof="-30" aria-hidden="true"></div>
+      <div class="forma forma--cuadrado" data-prof="14" aria-hidden="true"></div>
+      <h1>Entra un mensaje. El sistema decide qué hacer.</h1>
+      <p class="bajada">Una automatización de punta a punta, simulada en tu navegador. Elegí un mensaje de ejemplo o escribí el tuyo y mirá por dónde viaja.</p>
+    </section>
+
+    <section class="tablero" aria-label="Diagrama de la automatización">
+      <div class="tablero__scroll">
+        <svg id="lienzo" viewBox="0 0 960 520" role="img" aria-label="Diagrama: llega un mensaje, se clasifica y sigue por una de tres ramas: presupuesto, urgente u otro.">
+          <g id="aristas"></g>
+          <g id="etiquetas"></g>
+          <g id="nodos"></g>
+          <circle id="ficha" r="9" cx="-50" cy="-50"></circle>
+        </svg>
+      </div>
+      <ul class="leyenda">
+        <li><i class="ley ley--c"></i>Inicio o final</li>
+        <li><i class="ley ley--t"></i>Decisión</li>
+        <li><i class="ley ley--q"></i>Acción</li>
+      </ul>
+    </section>
+
+    <section class="mando">
+      <div class="mando__entrada">
+        <label for="mensaje">Mensaje que llega</label>
+        <textarea id="mensaje" rows="5" maxlength="400"></textarea>
+        <div class="ejemplos" role="group" aria-label="Mensajes de ejemplo">
+          <button type="button" class="ejemplo" data-i="0">Pide presupuesto</button>
+          <button type="button" class="ejemplo" data-i="1">Emergencia</button>
+          <button type="button" class="ejemplo" data-i="2">Spam</button>
+        </div>
+        <button type="button" id="ejecutar" class="ejecutar">Ejecutar automatización</button>
+      </div>
+
+      <div class="mando__registro">
+        <h2>Registro</h2>
+        <ol id="registro" class="registro" aria-live="polite">
+          <li class="vacio">Todavía no se ejecutó nada.</li>
+        </ol>
+      </div>
+
+      <div class="mando__salida">
+        <h2>Resultado</h2>
+        <div id="salida" class="salida"><p class="vacio">Acá aparece lo que produce la automatización.</p></div>
+      </div>
+    </section>
+
+    <p class="aviso">Es una simulación: usa reglas fijas dentro de esta página, sin IA ni servidor, y las horas son una estimación de ejemplo. Una automatización real sigue los mismos pasos conectada a un correo, una planilla o un chat.</p>
+  </main>
+
+  <footer class="pie">Demo del <a href="../../">portafolio de Marco Saad</a>. HTML, CSS y JavaScript sin librerías.</footer>
+</body>
+</html>

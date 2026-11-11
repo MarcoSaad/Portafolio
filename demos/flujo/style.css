@@ -1,0 +1,116 @@
+/* ===== Flujo: automatización simulada =====
+   Concepto: los símbolos de un diagrama de flujo (círculo, triángulo, cuadrado) leídos como piezas Bauhaus.
+   Colores primarios, tinta negra y mucho aire. */
+
+:root {
+  --fondo: #f1f1ee;
+  --tinta: #141414;
+  --suave: #5c5c58;
+  --amarillo: #ffc800;
+  --azul: #1f4bd8;
+  --rojo: #e63b2e;
+  --linea: #d6d6d0;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Jost", system-ui, sans-serif; background: var(--fondo); color: var(--tinta); line-height: 1.45; overflow-x: hidden; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+
+.barra { max-width: 1200px; margin: 0 auto; padding: 24px 24px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.marca { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.6rem; text-decoration: none; letter-spacing: -.01em; }
+.marca__c, .marca__q, .marca__t { display: inline-block; width: 16px; height: 16px; }
+.marca__c { background: var(--amarillo); border-radius: 50%; border: 2px solid var(--tinta); }
+.marca__q { background: var(--azul); border: 2px solid var(--tinta); }
+.marca__t { background: var(--rojo); clip-path: polygon(0 0, 100% 50%, 0 100%); margin-right: 8px; }
+.volver { font-weight: 500; text-underline-offset: 4px; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; max-width: 1200px; margin: 0 auto; padding: 64px 24px 56px; min-height: 420px; overflow: hidden; }
+h1 { position: relative; z-index: 1; font-size: clamp(2.8rem, 6.2vw, 5.6rem); font-weight: 800; line-height: .95; letter-spacing: -.035em; max-width: 13ch; }
+.bajada { position: relative; z-index: 1; margin-top: 28px; max-width: 46ch; font-size: 1.25rem; color: var(--suave); }
+.forma { position: absolute; border: 3px solid var(--tinta); will-change: transform; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.forma--circulo { width: clamp(150px, 24vw, 330px); aspect-ratio: 1; border-radius: 50%; background: var(--amarillo); right: 5%; top: 40px; }
+.forma--cuadrado { width: clamp(90px, 14vw, 190px); aspect-ratio: 1; background: var(--azul); right: 24%; bottom: 20px; }
+.forma--triangulo { width: clamp(100px, 15vw, 210px); aspect-ratio: 1; background: var(--rojo); border: 0; clip-path: polygon(0 0, 100% 50%, 0 100%); right: 2%; bottom: 0; }
+
+/* ---------- Tablero (el diagrama) ---------- */
+.tablero { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.tablero__scroll { overflow-x: auto; border: 3px solid var(--tinta); background: #fff; background-image: radial-gradient(var(--linea) 1.5px, transparent 1.5px); background-size: 24px 24px; }
+#lienzo { display: block; width: 100%; min-width: 760px; height: auto; }
+
+.arista { fill: none; stroke: var(--tinta); stroke-width: 3; stroke-linecap: round; opacity: .25; transition: opacity .3s; }
+.arista--viva { fill: none; stroke: var(--tinta); stroke-width: 5; stroke-linecap: round; }
+.etiqueta { font: 500 15px "DM Mono", monospace; fill: var(--suave); }
+
+.nodo .cuerpo { stroke: var(--tinta); stroke-width: 3; transform-box: fill-box; transform-origin: center; transition: transform .25s cubic-bezier(.3,1.6,.5,1); }
+.nodo--circulo .cuerpo { fill: var(--amarillo); }
+.nodo--cuadrado .cuerpo { fill: var(--azul); }
+.nodo--triangulo .cuerpo { fill: var(--rojo); }
+.nodo text { font: 700 16px "Jost", sans-serif; text-anchor: middle; pointer-events: none; }
+.nodo--cuadrado text { fill: #fff; }
+.nodo--circulo text, .nodo--triangulo text { fill: var(--tinta); }
+.nodo { transition: opacity .3s; }
+.corriendo .nodo:not(.visto):not(.activo) { opacity: .28; }
+.corriendo .arista:not(.recorrida) { opacity: .1; }
+.arista.recorrida { opacity: .25; }
+.nodo.activo .cuerpo { transform: scale(1.18); }
+#ficha { fill: var(--tinta); stroke: #fff; stroke-width: 3; }
+
+.leyenda { list-style: none; padding: 0; margin: 14px 0 0; display: flex; gap: 24px; flex-wrap: wrap; font-size: .95rem; color: var(--suave); }
+.leyenda li { display: flex; align-items: center; gap: 8px; }
+.ley { display: inline-block; width: 16px; height: 16px; border: 2px solid var(--tinta); }
+.ley--c { background: var(--amarillo); border-radius: 50%; }
+.ley--q { background: var(--azul); }
+.ley--t { background: var(--rojo); border: 0; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+
+/* ---------- Mando ---------- */
+.mando { max-width: 1200px; margin: 44px auto 0; padding: 0 24px; display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 28px; align-items: start; }
+.mando h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+label { display: block; font-size: 1.5rem; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+textarea {
+  width: 100%; font: 400 1rem/1.5 "DM Mono", monospace; color: var(--tinta); background: #fff; border: 3px solid var(--tinta);
+  border-radius: 0; padding: 14px; resize: vertical;
+}
+textarea:focus { outline: none; box-shadow: 6px 6px 0 var(--azul); }
+.ejemplos { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
+.ejemplo { font: 500 .95rem "Jost", sans-serif; padding: 8px 14px; border: 2px solid var(--tinta); background: transparent; cursor: pointer; border-radius: 99px; }
+.ejemplo:hover { background: var(--amarillo); }
+.ejecutar {
+  width: 100%; font: 800 1.2rem "Jost", sans-serif; padding: 16px; color: #fff; background: var(--tinta); border: 3px solid var(--tinta); cursor: pointer; border-radius: 0;
+  box-shadow: 6px 6px 0 var(--rojo); transition: transform .15s, box-shadow .15s;
+}
+.ejecutar:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--rojo); }
+.ejecutar:active:not(:disabled) { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--rojo); }
+.ejecutar:disabled { opacity: .55; cursor: progress; }
+
+.registro { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.registro li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; animation: entra .35s ease-out both; }
+.registro .letra { width: 34px; height: 34px; display: grid; place-items: center; font-weight: 800; border: 2px solid var(--tinta); background: #fff; }
+.registro strong { display: block; font-size: 1.05rem; }
+.registro .detalle { display: block; font: 400 .85rem/1.45 "DM Mono", monospace; color: var(--suave); overflow-wrap: anywhere; }
+@keyframes entra { from { opacity: 0; transform: translateX(-10px); } }
+.vacio { color: var(--suave); font-size: 1rem; grid-template-columns: 1fr !important; }
+
+.salida { border: 3px solid var(--tinta); background: #fff; padding: 18px; min-height: 140px; animation: entra .4s ease-out; }
+.salida h3 { font-size: 1.15rem; font-weight: 800; }
+.salida p { margin-top: 10px; font: 400 .95rem/1.55 "DM Mono", monospace; overflow-wrap: anywhere; }
+.salida .pie-salida { color: var(--suave); font-size: .85rem; }
+.salida--urgente { border-color: var(--rojo); box-shadow: 8px 8px 0 var(--rojo); }
+.salida--ok { box-shadow: 8px 8px 0 var(--amarillo); }
+
+.aviso { max-width: 1200px; margin: 40px auto 0; padding: 0 24px; color: var(--suave); font-size: .95rem; }
+.aviso::before { content: ""; display: block; width: 64px; height: 6px; background: var(--rojo); margin-bottom: 14px; }
+.pie { max-width: 1200px; margin: 56px auto 0; padding: 24px 24px 40px; border-top: 3px solid var(--tinta); font-size: .95rem; color: var(--suave); }
+
+@media (max-width: 960px) {
+  .mando { grid-template-columns: 1fr; }
+  .hero { padding-top: 40px; min-height: 0; }
+  .forma--circulo { top: auto; bottom: 10px; right: -30px; opacity: .85; }
+  .forma--cuadrado { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
