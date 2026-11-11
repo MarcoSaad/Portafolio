@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Le avisa al navegador que esto es HTML5 -->
+<html lang="es">
+<!-- lang="es": el contenido está en español (ayuda a buscadores y lectores de pantalla) -->
+
+<head>
+  <!-- <head> = datos "invisibles": título, estilos, configuración -->
+  <meta charset="UTF-8">
+  <!-- Permite mostrar tildes y ñ -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que la página se adapte al ancho del celular -->
+
+  <title>Marco Saad | Automatizaciones y desarrollo web</title>
+  <!-- Texto de la pestaña del navegador y de Google -->
+  <meta name="description" content="Portafolio de Marco Saad: automatizaciones y desarrollo web con HTML, CSS y JavaScript.">
+  <!-- Resumen que Google muestra debajo del título -->
+
+  <!-- Tipografía Poppins (la misma que usa el diseño de referencia), descargada desde Google Fonts.
+       Si no carga, el navegador usa una tipografía común y la página sigue funcionando. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Conecta con el archivo de estilos -->
+</head>
+
+<body>
+
+  <!-- ===================== CABECERA / MENÚ =====================
+       Va "flotando" arriba de la sección de inicio. -->
+  <header class="cabecera">
+    <a class="logo" href="#inicio">Marco<span>.</span></a>
+    <!-- El punto del logo se pinta de ámbar con CSS (por eso está dentro de un <span>) -->
+
+    <button class="boton-menu" id="boton-menu" aria-label="Abrir menú" aria-expanded="false">
+      <!-- Botón de las tres rayitas: solo se ve en celular. El JavaScript (js/main.js) lo hace funcionar -->
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="menu" id="menu">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== INICIO (HERO) ===================== -->
+    <section class="inicio" id="inicio">
+      <div class="inicio__texto">
+        <p class="inicio__hola">Hola</p>
+        <h1>Soy <span>Marco</span></h1>
+        <!-- <h1> = título principal. Uno solo por página -->
+        <p class="inicio__rol">Automatizaciones<br>&amp; desarrollo web</p>
+        <a class="boton boton--borde" href="#contacto">Contactame</a>
+      </div>
+
+      <div class="inicio__foto">
+        <!-- PENDIENTE: FOTO.
+             Cuando tengas una buena foto (idealmente con fondo transparente, formato .png):
+             1) guardala como img/foto.png
+             2) borrá el <div class="foto-pendiente"> de abajo
+             3) descomentá la línea <img> -->
+        <div class="foto-pendiente" aria-hidden="true">MS</div>
+        <!-- <img src="img/foto.png" alt="Marco Saad"> -->
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE MÍ ===================== -->
+    <section class="seccion seccion--clara" id="sobre-mi">
+      <div class="contenedor sobre-mi">
+
+        <div class="marco-foto">
+          <!-- El marco: el cuadro gris con el "corchete" ámbar sale de CSS (.marco-foto::before) -->
+          <div class="foto-pendiente foto-pendiente--chica" aria-hidden="true">MS</div>
+          <!-- PENDIENTE: reemplazar por <img src="img/foto.jpg" alt="Marco Saad"> -->
+        </div>
+
+        <div class="sobre-mi__texto">
+          <h2 class="titulo">Sobre mí</h2>
+          <p>
+            Vivo en el Delta de Tigre y trabajo en construcción y arreglos de casa. Ese trabajo me enseñó
+            a hacer lo que también pide la programación: entender bien el problema, elegir la solución
+            correcta y comprobar que quedó funcionando.
+          </p>
+          <p>
+            A los 15 años estudié programación estructurada y orientada a objetos, y escribí mis primeros
+            programas en Java. Más adelante hice un curso de HTML, CSS y JavaScript. Hoy aplico esa lógica
+            para automatizar tareas y armar sitios web, trabajando con Claude Code y revisando cada cosa
+            que produce.
+          </p>
+          <div class="botones">
+            <a class="boton boton--lleno" href="#contacto">Contactame</a>
+            <a class="boton boton--borde" href="https://github.com/MarcoSaad" target="_blank" rel="noopener">Ver GitHub</a>
+            <!-- target="_blank" abre en pestaña nueva; rel="noopener" es una medida de seguridad para esos links -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== SERVICIOS ===================== -->
+    <section class="seccion" id="servicios">
+      <div class="contenedor">
+        <h2 class="titulo">Servicios</h2>
+        <p class="intro">Lo que puedo hacer para que un negocio ahorre tiempo y trabaje con menos errores.</p>
+
+        <div class="servicios">
+
+          <!-- Cada tarjeta lleva una clase de color (--azul, --ambar, --rosa, --verde) que define su degradé -->
+          <article class="servicio servicio--azul">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+            <h3>Automatización de tareas</h3>
+            <p>Convierto tareas repetitivas en procesos automáticos: presupuestos, recordatorios, reportes y avisos.</p>
+          </article>
+
+          <article class="servicio servicio--ambar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+            <h3>Desarrollo web</h3>
+            <p>Sitios responsive hechos a mano con HTML, CSS y JavaScript, pensados para verse bien en el celular.</p>
+          </article>
+
+          <article class="servicio servicio--rosa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <h3>Auditorías exprés</h3>
+            <p>Reviso un proceso o una página que funciona a medias y propongo mejoras, mostrando el antes y el después.</p>
+          </article>
+
+          <article class="servicio servicio--verde">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+            <h3>IA con criterio</h3>
+            <p>Uso inteligencia artificial para trabajar más rápido, pero verifico cada resultado y registro los errores para no repetirlos.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROYECTOS ===================== -->
+    <section class="seccion seccion--clara" id="proyectos">
+      <div class="contenedor">
+        <h2 class="titulo">Proyectos</h2>
+        <p class="intro">Trabajos terminados y piezas que estoy construyendo.</p>
+
+        <div class="proyectos">
+
+          <article class="proyecto">
+            <span class="estado estado--listo">Terminado</span>
+            <h3>Cabañas Los Caquis</h3>
+            <p>Sitio de alquiler de cabañas en el Delta de Tigre: responsive, con animaciones al scrollear, galería de fotos por cabaña y formulario que envía la consulta por WhatsApp.</p>
+            <p class="etiquetas">HTML · CSS · JavaScript</p>
+            <div class="enlaces">
+              <!-- Botón principal: lleva al sitio funcionando. Botón secundario: el código -->
+              <a class="boton boton--lleno boton--chico" href="https://marcosaad.github.io/Caba-as-los-Caquis/" target="_blank" rel="noopener">Ver sitio en vivo</a>
+              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Caba-as-los-Caquis" target="_blank" rel="noopener">Código</a>
+            </div>
+          </article>
+
+          <article class="proyecto">
+            <span class="estado estado--listo">Terminado</span>
+            <h3>Este portafolio</h3>
+            <p>Sitio estático hecho desde cero, con menú adaptable y publicado gratis con GitHub Pages. Todo el código está comentado.</p>
+            <p class="etiquetas">HTML · CSS · JavaScript · Git</p>
+            <div class="enlaces">
+              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Portafolio" target="_blank" rel="noopener">Código</a>
+            </div>
+          </article>
+
+          <article class="proyecto">
+            <span class="estado estado--proceso">En desarrollo</span>
+            <h3>Generador de presupuestos</h3>
+            <p>Arma presupuestos de obra y arreglos con materiales, horas y margen, y genera un PDF listo para el cliente.</p>
+            <p class="etiquetas">Automatización</p>
+          </article>
+
+          <article class="proyecto">
+            <span class="estado estado--proceso">En desarrollo</span>
+            <h3>Auditorías exprés</h3>
+            <p>Casos reales que funcionan mal o a medias, mejorados y presentados con el antes y el después.</p>
+            <p class="etiquetas">Análisis · Mejora de procesos</p>
+          </article>
+
+          <article class="proyecto">
+            <span class="estado estado--proceso">En desarrollo</span>
+            <h3>Bitácora de errores de la IA</h3>
+            <p>Registro de las veces que la IA se equivocó: cómo lo detecté, cómo lo corregí y cómo lo verifico ahora.</p>
+            <p class="etiquetas">Verificación · Buenas prácticas</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACTO ===================== -->
+    <section class="seccion" id="contacto">
+      <div class="contenedor contacto">
+        <h2 class="titulo">Contacto</h2>
+        <p class="intro">¿Tenés una tarea que se repite todos los días o una página que necesita mejorar? Escribime.</p>
+        <div class="botones botones--centro">
+          <a class="boton boton--lleno" href="mailto:marco.e.saad@gmail.com">marco.e.saad@gmail.com</a>
+          <!-- mailto: abre el programa de correo del visitante con tu mail ya cargado -->
+          <a class="boton boton--borde" href="https://github.com/MarcoSaad" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>© 2026 Marco Saad · Delta de Tigre, Buenos Aires</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <!-- El script va al final del body para que el HTML ya esté cargado cuando el JavaScript lo busque -->
+</body>
+
+</html>
