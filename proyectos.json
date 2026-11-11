@@ -1,0 +1,70 @@
+[
+  {
+    "id": "presupuestos",
+    "titulo": "Generador de presupuestos",
+    "estado": "demo",
+    "problema": "Armar a mano un presupuesto de obra lleva tiempo y es fácil equivocarse en las cuentas.",
+    "solucion": "Una hoja donde cargás materiales, horas y margen. El total se calcula en vivo y se exporta a PDF para el cliente. Los precios son de ejemplo.",
+    "tecnologias": ["HTML", "CSS", "JavaScript"],
+    "enlaceVivo": "demos/presupuestos/",
+    "enlaceCodigo": "https://github.com/MarcoSaad/Portafolio/tree/main/demos/presupuestos",
+    "enlaceCaso": "proyectos/generador-presupuestos.html",
+    "captura": "img/proyectos/presupuestos.jpg",
+    "alt": "Hoja de presupuesto con materiales, horas, margen y un total de 304.920 pesos."
+  },
+  {
+    "id": "auditoria",
+    "titulo": "Auditoría exprés",
+    "estado": "demo",
+    "problema": "Un trámite online con demasiados campos y pantallas hace que la gente abandone. Este caso es inventado, para mostrar el formato.",
+    "solucion": "Marco los problemas, rediseño el flujo y comparo el antes y el después con un control para arrastrar.",
+    "tecnologias": ["HTML", "CSS", "JavaScript"],
+    "enlaceVivo": "demos/auditoria/",
+    "enlaceCodigo": "https://github.com/MarcoSaad/Portafolio/tree/main/demos/auditoria",
+    "captura": "img/proyectos/auditoria.jpg",
+    "alt": "Comparador antes y después de un formulario de turnos: a la izquierda el formulario viejo con anotaciones en rojo, a la derecha el nuevo."
+  },
+  {
+    "id": "flujo",
+    "titulo": "Flujo",
+    "estado": "demo",
+    "problema": "Responder a mano cada mensaje que llega consume tiempo, y las urgencias se pierden entre las consultas.",
+    "solucion": "Una automatización simulada que clasifica el mensaje, extrae los datos y arma la respuesta o el aviso, mostrando cada paso.",
+    "tecnologias": ["JavaScript", "SVG", "Automatización"],
+    "enlaceVivo": "demos/flujo/",
+    "enlaceCodigo": "https://github.com/MarcoSaad/Portafolio/tree/main/demos/flujo",
+    "captura": "img/proyectos/flujo.jpg",
+    "alt": "Diagrama de flujo con un mensaje que llega, se clasifica y sigue por la rama de presupuesto hasta un borrador de respuesta."
+  },
+  {
+    "id": "revisado",
+    "titulo": "Revisado",
+    "estado": "demo",
+    "problema": "La IA devuelve errores con total seguridad y es fácil aceptarlos sin revisar.",
+    "solucion": "Tres casos armados para practicar cómo encontrarlos, con los chequeos que uso para verificar.",
+    "tecnologias": ["JavaScript", "IA con criterio"],
+    "enlaceVivo": "demos/revisado/",
+    "enlaceCodigo": "https://github.com/MarcoSaad/Portafolio/tree/main/demos/revisado",
+    "captura": "img/proyectos/revisado.jpg",
+    "alt": "Ficha de control con un presupuesto en el que una línea quedó marcada con un sello rojo de error encontrado."
+  },
+  {
+    "id": "portafolio",
+    "titulo": "Este portafolio",
+    "estado": "terminado",
+    "problema": "Mostrar mi trabajo en un solo lugar, gratis y con un código que yo pueda leer y mantener.",
+    "solucion": "Un sitio estático en HTML, CSS y JavaScript sin frameworks, publicado con GitHub Pages.",
+    "tecnologias": ["HTML", "CSS", "JavaScript", "Git"],
+    "enlaceCodigo": "https://github.com/MarcoSaad/Portafolio",
+    "captura": "img/proyectos/portafolio-escritorio.jpg",
+    "alt": "Portada de este portafolio, con fondo oscuro y acento ámbar."
+  },
+  {
+    "id": "bitacora",
+    "titulo": "Bitácora de errores de la IA",
+    "estado": "desarrollo",
+    "problema": "Quien usa IA sin revisar entrega errores sin darse cuenta.",
+    "solucion": "Un registro de las veces que la IA se equivocó: cómo lo detecté, cómo lo corregí y cómo lo verifico ahora.",
+    "tecnologias": ["Verificación", "Buenas prácticas"]
+  }
+]

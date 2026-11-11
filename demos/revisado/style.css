@@ -103,8 +103,9 @@ h1 { font: 900 clamp(3.4rem, 10vw, 9rem)/.86 "Big Shoulders Display", sans-serif
 .planilla { position: sticky; top: 20px; background: var(--papel); border: 3px solid var(--tinta); padding: 20px; }
 .planilla h2 { font: 900 1.7rem "Big Shoulders Display", sans-serif; letter-spacing: .02em; margin-bottom: 14px; }
 .chequeos { list-style: none; padding: 0; display: grid; gap: 16px; }
-.chequeos li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; opacity: .55; transition: opacity .3s; }
-.chequeos li.hecho { opacity: 1; }
+.chequeos li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; }
+.chequeos li:not(.hecho) strong { color: var(--suave); }
+.chequeos li:not(.hecho) .casilla { border-color: var(--suave); }
 .chequeos small { display: block; color: var(--suave); font-size: .85rem; line-height: 1.35; }
 .chequeos strong { font-size: .98rem; line-height: 1.25; display: block; }
 .casilla { width: 30px; height: 30px; border: 3px solid var(--tinta); position: relative; }

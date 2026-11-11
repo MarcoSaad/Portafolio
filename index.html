@@ -157,70 +157,10 @@
         <h2 class="titulo">Proyectos</h2>
         <p class="intro">Trabajos terminados y piezas que estoy construyendo.</p>
 
-        <div class="proyectos">
-
-          <article class="proyecto">
-            <span class="estado estado--listo">Demo interactiva</span>
-            <h3>Generador de presupuestos</h3>
-            <p>Arma presupuestos de obra y arreglos con materiales, horas y margen. El total se calcula en vivo y sale en PDF listo para el cliente. Precios de ejemplo.</p>
-            <p class="etiquetas">HTML · CSS · JavaScript · Automatización</p>
-            <div class="enlaces">
-              <a class="boton boton--lleno boton--chico" href="demos/presupuestos/">Ver demo</a>
-              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Portafolio/tree/main/demos/presupuestos" target="_blank" rel="noopener">Código</a>
-            </div>
-          </article>
-
-          <article class="proyecto">
-            <span class="estado estado--listo">Demo interactiva</span>
-            <h3>Auditoría exprés</h3>
-            <p>Ejemplo de cómo presento una auditoría: un formulario de turnos inventado con sus problemas marcados, la versión mejorada y un comparador antes/después.</p>
-            <p class="etiquetas">HTML · CSS · JavaScript</p>
-            <div class="enlaces">
-              <a class="boton boton--lleno boton--chico" href="demos/auditoria/">Ver demo</a>
-              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Portafolio/tree/main/demos/auditoria" target="_blank" rel="noopener">Código</a>
-            </div>
-          </article>
-
-          <article class="proyecto">
-            <span class="estado estado--listo">Demo interactiva</span>
-            <h3>Flujo</h3>
-            <p>Una automatización simulada paso a paso: entra un mensaje, se clasifica, se extraen los datos y se arma la respuesta o el aviso. Escribí el tuyo y mirá por dónde viaja.</p>
-            <p class="etiquetas">Automatización · JavaScript · SVG</p>
-            <div class="enlaces">
-              <a class="boton boton--lleno boton--chico" href="demos/flujo/">Ver demo</a>
-              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Portafolio/tree/main/demos/flujo" target="_blank" rel="noopener">Código</a>
-            </div>
-          </article>
-
-          <article class="proyecto">
-            <span class="estado estado--listo">Demo interactiva</span>
-            <h3>Revisado</h3>
-            <p>Tres respuestas armadas con un error escondido cada una: una cuenta, un bucle y un método inventado. Encontralo y mirá cómo lo verifico.</p>
-            <p class="etiquetas">IA con criterio · JavaScript</p>
-            <div class="enlaces">
-              <a class="boton boton--lleno boton--chico" href="demos/revisado/">Ver demo</a>
-              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Portafolio/tree/main/demos/revisado" target="_blank" rel="noopener">Código</a>
-            </div>
-          </article>
-
-          <article class="proyecto">
-            <span class="estado estado--listo">Terminado</span>
-            <h3>Este portafolio</h3>
-            <p>Sitio estático hecho desde cero, con menú adaptable y publicado gratis con GitHub Pages. Todo el código está comentado.</p>
-            <p class="etiquetas">HTML · CSS · JavaScript · Git</p>
-            <div class="enlaces">
-              <a class="boton boton--borde boton--chico" href="https://github.com/MarcoSaad/Portafolio" target="_blank" rel="noopener">Código</a>
-            </div>
-          </article>
-
-          <article class="proyecto">
-            <span class="estado estado--proceso">En desarrollo</span>
-            <h3>Bitácora de errores de la IA</h3>
-            <p>Registro de las veces que la IA se equivocó: cómo lo detecté, cómo lo corregí y cómo lo verifico ahora.</p>
-            <p class="etiquetas">Verificación · Buenas prácticas</p>
-          </article>
-
+        <div class="proyectos" id="lista-proyectos">
+          <p class="cargando">Cargando proyectos…</p>
         </div>
+        <noscript><p class="cargando">Para ver los proyectos hace falta JavaScript. También están en <a href="https://github.com/MarcoSaad">GitHub</a>.</p></noscript>
       </div>
     </section>
 
@@ -244,6 +184,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/proyectos.js"></script>
   <!-- El script va al final del body para que el HTML ya esté cargado cuando el JavaScript lo busque -->
 </body>
 

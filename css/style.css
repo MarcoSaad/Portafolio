@@ -84,11 +84,11 @@ h1, h2, h3, p { margin: 0; }                  /* saco márgenes por defecto para
   display: grid;
   place-items: center;          /* centra el texto en ambos sentidos */
   font-size: 6rem; font-weight: 700;
-  color: rgba(42, 42, 42, .35);
+  color: rgba(42, 42, 42, .62);
   background: rgba(255, 255, 255, .25);
   border-radius: 12px 12px 0 0;
 }
-.foto-pendiente--chica { width: 100%; font-size: 4rem; background: #f1f1f1; color: #cfcfcf; border-radius: 0; }
+.foto-pendiente--chica { width: 100%; font-size: 4rem; background: #f1f1f1; color: #757575; border-radius: 0; }
 
 /* ===== BOTONES ===== */
 .boton {
@@ -161,7 +161,7 @@ h1, h2, h3, p { margin: 0; }                  /* saco márgenes por defecto para
 .proyecto h3 { font-size: 1.1rem; margin: .8rem 0 .5rem; }
 .proyecto p { color: var(--texto-suave); font-size: .88rem; }
 .proyecto .etiquetas { color: var(--ambar); font-size: .8rem; font-weight: 500; margin-top: .9rem; }
-.proyecto .enlaces { display: flex; gap: .6rem; margin-top: auto; padding-top: 1.2rem; } /* margin-top:auto empuja los botones al fondo de la tarjeta */
+.proyecto .enlaces { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: auto; padding-top: 1.2rem; } /* margin-top:auto empuja los botones al fondo de la tarjeta */
 .boton--chico { padding: .45rem 1.1rem; font-size: .78rem; } /* versión más chica del botón, para las tarjetas */
 
 .estado { align-self: flex-start; font-size: .7rem; font-weight: 600; padding: .15rem .7rem; border-radius: 20px; }
@@ -199,3 +199,10 @@ h1, h2, h3, p { margin: 0; }                  /* saco márgenes por defecto para
   .marco-foto { max-width: 280px; margin: 0 auto 0 35px; }
   .servicios { grid-template-columns: 1fr; }
 }
+/* Captura de cada proyecto y textos de problema/solución (las tarjetas las arma js/proyectos.js) */
+.proyecto__captura { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 4px; margin-bottom: 1rem; background: var(--fondo); }
+.proyecto__dato { margin-top: .5rem; }
+.proyecto__dato strong { color: var(--texto); font-weight: 600; }
+.cargando { color: var(--texto-suave); }
+.cargando a { color: var(--ambar); text-decoration: underline; }
+.proyecto .boton--chico { white-space: nowrap; }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de presupuestos | Caso | Marco Saad</title>
+  <meta name="description" content="Caso: un generador de presupuestos de obra y arreglos que calcula el total en vivo y exporta a PDF. Problema, decisiones técnicas y qué se verificó.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="caso.css">
+</head>
+<body>
+
+  <nav class="caso-barra" aria-label="Navegación del caso">
+    <a href="../#proyectos">Volver a los proyectos</a>
+    <a href="../">Portafolio de Marco Saad</a>
+  </nav>
+
+  <main class="caso">
+    <span class="caso__estado">Demo interactiva</span>
+    <h1>Generador de presupuestos</h1>
+    <p class="caso__resumen">Una hoja donde se cargan materiales, horas y margen. El total se calcula en vivo y el presupuesto sale en PDF listo para el cliente.</p>
+    <div class="caso__botones">
+      <a class="boton boton--lleno" href="../demos/presupuestos/">Probar la demo</a>
+      <a class="boton boton--borde" href="https://github.com/MarcoSaad/Portafolio/tree/main/demos/presupuestos" target="_blank" rel="noopener">Ver el código</a>
+    </div>
+
+    <img class="caso__captura" src="../img/proyectos/presupuestos.jpg" width="1200" height="750" alt="Hoja de presupuesto con materiales, horas, margen y un total de 304.920 pesos.">
+    <p class="caso__pie-captura">Rubro de ejemplo: plomería. Los precios son de muestra y se pueden cambiar.</p>
+
+    <section>
+      <h2>El problema</h2>
+      <p>Armar un presupuesto de obra a mano es lento y repetitivo: se rehacen las mismas cuentas, es fácil equivocarse al sumar y cada presupuesto sale con un formato distinto.</p>
+    </section>
+
+    <section>
+      <h2>A quién le sirve</h2>
+      <p>A quien hace arreglos y obras chicas (plomería, electricidad, albañilería) y necesita mandar un presupuesto claro, con el detalle de materiales y mano de obra. Está pensado desde el rubro de Marco: construcción y arreglos.</p>
+    </section>
+
+    <section>
+      <h2>Cómo lo resolví</h2>
+      <ul>
+        <li>Una sola hoja editable: los materiales con cantidad y precio, horas de trabajo, valor de la hora, margen e IVA opcional.</li>
+        <li>Tres rubros de ejemplo cargan datos de muestra para probar sin empezar de cero.</li>
+        <li>El total se recalcula con cada cambio y se muestra en un odómetro cuyos dígitos ruedan.</li>
+        <li>El botón de PDF imprime solo la hoja: con una hoja de estilos de impresión alcanza, sin servidor ni librerías.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Decisiones técnicas</h2>
+      <ul>
+        <li><strong>HTML, CSS y JavaScript puros.</strong> Sin framework ni librerías: el código se puede leer entero y no depende de nada externo.</li>
+        <li><strong>Un único lugar para la cuenta.</strong> Una función <code>calcular()</code> toma el estado y devuelve costo, margen, IVA y total. Todo lo que se ve sale de ahí, así no hay dos cuentas que puedan discrepar.</li>
+        <li><strong>Formato argentino.</strong> Los importes se muestran con <code>toLocaleString("es-AR")</code>: punto para los miles.</li>
+        <li><strong>El texto del usuario nunca se interpreta como HTML.</strong> Los valores se asignan con <code>.value</code> y <code>textContent</code>, no con <code>innerHTML</code>, para que una comilla o una etiqueta no rompan la hoja.</li>
+        <li><strong>PDF con <code>window.print()</code>.</strong> La regla <code>@media print</code> oculta todo menos la hoja. Es la opción más simple que funciona sin servidor.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Qué verifiqué</h2>
+      <ul>
+        <li>La cuenta con un caso completo: en el rubro de albañilería, $355.000 de materiales + $288.000 de mano de obra = $643.000; con 35% de margen y 21% de IVA da $1.050.341, que es lo que mostró la pantalla.</li>
+        <li>En un ancho de celular de 390 px no hay scroll horizontal.</li>
+        <li>Lighthouse en celular: Rendimiento 99, Accesibilidad 100, Buenas prácticas 100 y SEO 100.</li>
+      </ul>
+      <p class="caso__nota">Lo que todavía no verifiqué: la exportación a PDF en distintos navegadores y usar la herramienta con un presupuesto real de un cliente.</p>
+    </section>
+
+    <section>
+      <h2>Qué haría distinto</h2>
+      <ul>
+        <li>Guardar el presupuesto en el navegador (<code>localStorage</code>) para no perderlo al cerrar la página.</li>
+        <li>Agregar pruebas automáticas de los cálculos, para que un cambio futuro no rompa una cuenta sin avisar.</li>
+        <li>Reemplazar los precios de muestra por los de un presupuesto real y probarlo con un cliente.</li>
+      </ul>
+    </section>
+  </main>
+
+</body>
+</html>
